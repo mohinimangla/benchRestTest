@@ -6,7 +6,6 @@ from resources import Transactions, Report
 app = Flask(__name__)
 api = Api(app)
 app.config.from_object('config') 
-print(app.config)
 
 # register resource
 api.add_resource(Transactions, "/transactions") # accessible at /transactions
