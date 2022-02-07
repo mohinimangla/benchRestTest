@@ -17,9 +17,9 @@ URL Endpoints:
 Testing:
     Run test.py python module in console
     Sample result: 
-        >>> python test.py 
-        ....
-        ----------------------------------------------------------------------
-        Ran 4 tests in 4.240s
-        OK
-        
+    >>> python test.py 
+    ....
+    ----------------------------------------------------------------------
+    Ran 4 tests in 4.240s
+    OK
+	
