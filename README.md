@@ -10,6 +10,6 @@ Setup:
     run python main.py
 
 URL Endpoints:
-    /transactions - returns list of all transactions
-    /transactions?page_num={} - returns transsactions on page provided
-    /reports - returns a report of daily calculated balances
+    /transactions - get request returns list of all transactions
+    /transactions?page_num={} - get request returns transsactions on page provided
+    /reports - get request returns a report of daily calculated balances
