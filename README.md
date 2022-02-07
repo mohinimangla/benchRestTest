@@ -12,7 +12,7 @@ Setup:
 URL Endpoints:
     /transactions - get request returns list of all transactions
     /transactions?page={} - get request returns transactions on query parameter - page
-    /reports - get request returns a report of daily calculated balances
+    /report - get request returns a report of daily balances
 
 Testing:
     Run test.py python module in console
