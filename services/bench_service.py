@@ -11,7 +11,7 @@ class BenchService:
     def invalid_page_err(self):
         return "Not a valid page number"
 
-    def get_all_transactions(self):
+    def get_all_transactions(self, page_start=1, page_end=None):
         """ Returns list of all transaction and error message if any 
         'transaction list' -> [
             {"Date": String,
@@ -21,19 +21,26 @@ class BenchService:
         }, {.....]
         """
         result_list = []
-        count = 1
-        while True:
+        count = page_start
+        total_transactions = 0
+        if not page_end:
+            page_end = float('inf')
+        while count<=page_end:
+                 
             page_data, err = self.get_transaction_by_page(count)
             if err:
                 break
-            result_list.extend(page_data)
+            if total_transactions<1:
+                total_transactions = page_data.get("count")
+            
+            result_list.extend(page_data.get("transactions"))
             
             count += 1
         
         if not result_list:
-            return None, self.no_data_err()
+            return None, total_transactions, self.no_data_err()
         
-        return result_list, None 
+        return result_list, total_transactions, None 
 
     def get_transaction_by_page(self, page):
         """ Returns transaction list and error message if any 
@@ -60,5 +67,5 @@ class BenchService:
         
 
     def format_transaction_data(self, page_data):
-        return page_data.get('transactions', [])
+        return {"count": page_data.get('totalCount', 0), "transactions": page_data.get('transactions', [])}
 
