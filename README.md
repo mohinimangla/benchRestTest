@@ -37,8 +37,8 @@ OK
 - If there are a maximum of `n` pages that can be returned from transactions-bench API, then for all pages < `n` the number of results returned will be 10
 
 ## Application Structure
-- Endpoints `/transaction` and `/report` are defined by registering resources in main.py
+- `Endpoints` /transactions and /report are defined by registering resources in main.py
 - `Resources` are defined in resource.py. Here the query parameters are fetched from the request and logic is defined for parsing data models and formatting results for output
 - Resources are dependent on `data models` which are defined in models.py along with their respective serializers
 - Resources are also responsible for getting data from the `external service API` which is handled in services/bench_service
-- `Unit tests` have been defined in test.py
+- `Unit tests` have been created in test.py
