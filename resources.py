@@ -85,5 +85,21 @@ class Report(Transactions):
                 daily_balance.update({transact.date: transact.amount})
             else:
                 daily_balance[transact.date] += transact.amount
-                
-        return daily_balance, None
+        
+        return self.get_running_balance(daily_balance), None
+    
+    def get_running_balance(self, daily_balance):
+        if len(daily_balance) == 0:
+            return {}
+        out_val = {}
+        sorted_date = list(daily_balance.keys())
+        print(sorted_date)
+        sorted_date = sorted(sorted_date)
+        print(sorted_date)
+        for i in range(len(sorted_date)):
+            if i==0:
+                out_val.update({sorted_date[i]: daily_balance[sorted_date[i]]}) 
+            else:
+                out_val.update({sorted_date[i]: daily_balance[sorted_date[i]]+out_val[sorted_date[i-1]]}) 
+
+        return out_val
